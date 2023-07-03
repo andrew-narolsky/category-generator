@@ -1,0 +1,93 @@
+.hidden {
+    display: none !important;
+}
+
+.progress-bar {
+    width: 0;
+    transition: 1s;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.progress {
+    height: 3rem;
+    width: 100%;
+}
+
+.file-loader {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+    align-items: center;
+    align-content: center;
+}
+
+.table-wrap {
+    max-height: 500px;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+}
+
+.file-loader-wrap {
+    width: 100%;
+    padding: 100px 50px;
+    border-radius: 7px;
+    border: 3px dashed #eee;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.file-loader-wrap.disabled, .file-loader-wrap.disabled:hover {
+    opacity: .5;
+    border: 3px dashed #eee;
+    cursor: inherit;
+}
+
+.file-loader-wrap .btn {
+    background-color: #e9ecef;
+    border: none;
+}
+
+.file-loader-wrap:hover .btn {
+    background-color: #454cad;
+}
+
+.file-loader-wrap.disabled:hover .btn {
+    background-color: #e9ecef;
+}
+
+.file-loader-wrap:hover svg path {
+    fill: black;
+}
+
+.file-loader-wrap.disabled:hover svg path {
+    fill: #e9ecef;
+}
+
+.file-loader-wrap:hover {
+    border-color: #454cad;
+    cursor: pointer;
+}
+
+.file-loader-wrap svg path {
+    fill: #e9ecef;
+}
+
+.file-loader-wrap svg {
+    width: 100px;
+    height: 100px;
+}
+
+.file-loader-wrap button {
+    z-index: -1;
+}
+
+#upload {
+    display: none;
+}

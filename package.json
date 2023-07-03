@@ -1,0 +1,27 @@
+{
+  "name": "content-parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "build": "electron-packager . --platform=win32,darwin --overwrite --asar --icon=images/icon.icns",
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "cheerio": "^1.0.0-rc.12",
+    "convert-excel-to-json": "^1.7.0",
+    "dotenv": "^16.3.1",
+    "exceljs": "^4.3.0",
+    "log-to-file": "^3.0.3",
+    "sequelize": "^6.32.1",
+    "sqlite3": "^5.1.6",
+    "sweetalert2": "^11.4.8"
+  },
+  "devDependencies": {
+    "electron": "^25.1.1",
+    "electron-packager": "^17.1.1"
+  }
+}
