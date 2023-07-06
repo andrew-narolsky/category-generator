@@ -10,7 +10,14 @@ const Page = sequelize.define('pages', {
     url: {
         type: DataTypes.STRING
     },
-    text: {
+    domain: {
+        type: DataTypes.STRING
+    },
+    title: {
+        type: DataTypes.STRING,
+        defaultValue: ''
+    },
+    token: {
         type: DataTypes.TEXT,
         defaultValue: ''
     },
@@ -20,4 +27,23 @@ const Page = sequelize.define('pages', {
     }
 });
 
-module.exports = { Page }
+const Job = sequelize.define('jobs', {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    name: {
+        type: DataTypes.STRING,
+        unique: true
+    },
+    status: {
+        type: DataTypes.ENUM('PENDING', 'SUCCESS', 'ERROR'),
+        defaultValue: 'PENDING',
+    },
+});
+
+Page.hasMany(Job);
+Job.belongsTo(Page);
+
+module.exports = { Page, Job }
