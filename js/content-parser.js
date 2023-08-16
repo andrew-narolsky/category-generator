@@ -5,6 +5,7 @@ const sequelize = require('./db');
 const { Page, Job } = require('./models');
 const API = require('./api');
 const cheerio = require('cheerio');
+const {logger} = require("sequelize/lib/utils/logger");
 
 class ContentParser {
 
@@ -241,25 +242,28 @@ class ContentParser {
 
             await api.GetHtml(data[index]['A']).then(async result => {
 
-                let content = this.GetData(result);
+                if (result) {
 
-                const page = await Page.create({
-                    url: data[index]['A'],
-                    domain: data[index]['B'],
-                    title: content.title
-                });
+                    let content = this.GetData(result);
 
-                await api.GetToken(content.text).then(async token => {
-
-                    await Page.update({ token: token[0] }, {
-                        where: {
-                            id: page.id
-                        }
-                    }).then(() => {
-                        const width = (num / arrayLength) * 100;
-                        this.progressLoader.style.width = width + '%';
+                    const page = await Page.create({
+                        url: data[index]['A'],
+                        domain: data[index]['B'],
+                        title: content.title
                     });
-                });
+
+                    await api.GetToken(content.text).then(async token => {
+
+                        await Page.update({ token: token[0] }, {
+                            where: {
+                                id: page.id
+                            }
+                        }).then(() => {
+                            const width = (num / arrayLength) * 100;
+                            this.progressLoader.style.width = width + '%';
+                        });
+                    });
+                }
             });
         }
     }
